@@ -1,22 +1,27 @@
-import { Container, Typography } from '@mui/material';
+import { useState } from 'react';
+import { Container, Box, Grid } from '@mui/material';
 import UrlForm from './components/UrlForm';
 import UrlList from './components/UrlList';
-import { useState } from 'react';
 
-function App() {
+export default function App() {
   const [reload, setReload] = useState(false);
-
-  const handleReload = () => setReload((r) => !r);
+  const handleReload = () => setReload(!reload);
 
   return (
-    <Container maxWidth="md" sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Encurtador de URL
-      </Typography>
-      <UrlForm onCreated={handleReload} />
-      <UrlList key={reload.toString()} />
+    <Container maxWidth="md" sx={{ mt: { xs: 4, md: 8 }, px: { xs: 2, md: 0 } }}>
+      <Box mb={4}>
+        <img src="/Logo.png" alt="brev.ly" style={{ height: 40 }} />
+      </Box>
+
+      <Grid container spacing={4} justifyContent="center">
+        <Grid item xs={12} md={5}>
+          <UrlForm onCreated={handleReload} />
+        </Grid>
+
+        <Grid item xs={12} md={5}>
+          <UrlList key={reload.toString()} />
+        </Grid>
+      </Grid>
     </Container>
   );
 }
-
-export default App;

@@ -3,17 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx src/server.ts"
+    "dev": "tsx src/server.ts",
+    "db:migrate": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:check": "drizzle-kit introspect",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.820.0",
+    "@fastify/cors": "^11.0.1",
+    "csv-stringify": "^6.5.2",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.43.1",
     "fastify": "^5.3.3",
-    "pg": "^8.16.0"
+    "pg": "^8.16.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",
